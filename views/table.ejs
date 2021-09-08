@@ -1,0 +1,65 @@
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <!-- Button trigger modal -->
+      <button
+        type="button"
+        class="btn btn-outline-primary btn-sm"
+        data-toggle="modal"
+        data-target="#add-modal"
+      >
+        Add
+      </button>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table
+          class="table table-bordered"
+          id="dataTable"
+          width="100%"
+          cellspacing="0"
+        >
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Nama</th>
+              <th>Alamat</th>
+              <th>Jenis_kelamin</th>
+              <th>Pekerjaan</th>
+              <th>No_telp</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(let i = 0; i < penduduk.length; i++){ %>
+            <tr>
+              <td><%= i +1 %></td>
+              <td><%= penduduk[i].nama %></td>
+              <td><%= penduduk[i].alamat %></td>
+              <td><%= penduduk[i].jenis_kelamin %></td>
+              <td><%= penduduk[i].pekerjaan %></td>
+              <td><%= penduduk[i].no_telp %></td>
+              <td class="text-center">
+                <form action="/penduduk/<%= penduduk[i].id %>?_method=DELETE" method="POST">
+                <a
+                  href="javascript:void()"
+                  class="btn btn-outline-warning btn-sm button-update"
+                  data-id="<%= penduduk[i].id %>"
+                  data-nama="<%= penduduk[i].nama %>"
+                  data-alamat="<%= penduduk[i].alamat %>"
+                  data-jenis_kelamin="<%= penduduk[i].jenis_kelamin %>"
+                  data-pekerjaan="<%= penduduk[i].pekerjaan %>"
+                  data-no_telp="<%= penduduk[i].no_telp %>"
+                  >Edit</a>
+                <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Apakah kamu yakin ingin hapus data?');">
+                  Delete
+                </button>
+                </form>
+              </td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
